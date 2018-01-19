@@ -1,7 +1,3 @@
-/** 
-* @version 1.4.11
-* @license MIT
-*/
 (function (ng, undefined){
     'use strict';
 
@@ -32,6 +28,11 @@ ng.module('smart-table')
         var pipeAfterSafeCopy = true;
         var ctrl = this;
         var lastSelected;
+
+        $scope.$on('refreshSTPipe', function() {
+          tableState.pagination.start = 0;
+          ctrl.pipe();
+        });
 
         function copyRefs(src) {
             return src ? [].concat(src) : [];
